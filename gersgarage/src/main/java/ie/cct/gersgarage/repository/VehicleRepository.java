@@ -12,4 +12,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, String> {
 	
 	public Vehicle findByLicplate(String licplate);
 
+	public void deleteById(int id);
+
 }

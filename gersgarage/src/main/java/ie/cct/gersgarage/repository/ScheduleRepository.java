@@ -17,4 +17,6 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
 	
 	public Optional<Schedule> findById(int id);
 
+	public void deleteById(int id);
+
 }

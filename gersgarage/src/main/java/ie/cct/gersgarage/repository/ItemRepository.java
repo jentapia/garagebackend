@@ -17,4 +17,6 @@ public interface ItemRepository extends JpaRepository<Item, Integer>{
 	
 	public Optional<Item> findById(int id);
 
+	public void deleteById(int id);
+
 }

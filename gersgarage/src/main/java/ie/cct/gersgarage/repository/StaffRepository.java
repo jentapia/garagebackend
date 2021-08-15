@@ -17,4 +17,6 @@ public interface StaffRepository extends JpaRepository<Staff, Integer>{
 	
 	public Optional<Staff> findById(int id);
 
+	public void deleteById(int id);
+
 }

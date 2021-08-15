@@ -323,6 +323,19 @@ public class GersgarageController {
 								
 		return ResponseEntity.status(HttpStatus.CREATED).body(staffRepository.save(staff.get()));
 	}
+
+	//Delete a staff member
+	@DeleteMapping("deletestaff/{id}")
+	public ResponseEntity<?> deleteStaff (@PathVariable(value = "id") int id){
+		Optional<Staff> staff = staffRepository.findById(id);
+		
+		if(!staff.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		staffRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
 	
 	
 	//******************** ITEM FUNCTIONS ************************
@@ -360,6 +373,20 @@ public class GersgarageController {
 										
 		return ResponseEntity.status(HttpStatus.CREATED).body(itemRepository.save(item.get()));
 	}
+
+	//Delete an item
+	@DeleteMapping("deleteitem/{id}")
+	public ResponseEntity<?> deleteItem (@PathVariable(value = "id") int id){
+		Optional<Item> item = itemRepository.findById(id);
+		
+		
+		if(!item.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		itemRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
 	
 	//******************** SERVICE FUNCTIONS ************************
 	//Create a new service
@@ -380,6 +407,18 @@ public class GersgarageController {
 				
 		return services;
 	}
+
+	//Read a service by id
+	@GetMapping("/service/{id}")
+	public ResponseEntity<?> readServById(@PathVariable(value = "id") int id){
+					
+		Optional<Service> service = serviceRepository.findById(id);
+		
+		if(!service.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(service);
+	}
 	
 	//Edit a service
 	@PutMapping("editservice/{id}")
@@ -395,6 +434,20 @@ public class GersgarageController {
 		service.get().setCost(serviceDetails.getCost());
 						
 		return ResponseEntity.status(HttpStatus.CREATED).body(serviceRepository.save(service.get()));
+	}
+
+	//Delete a service
+	@DeleteMapping("deleteservice/{id}")
+	public ResponseEntity<?> deleteService (@PathVariable(value = "id") int id){
+		Optional<Service> service = serviceRepository.findById(id);
+		
+		
+		if(!service.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		serviceRepository.deleteById(id);
+		return ResponseEntity.ok().build();
 	}	
 	
 	
@@ -436,6 +489,20 @@ public class GersgarageController {
 		
 						
 		return ResponseEntity.status(HttpStatus.CREATED).body(invoiceRepository.save(invoice.get()));
+	}
+
+	//Delete an invoice
+	@DeleteMapping("deleteinvoice/{id}")
+	public ResponseEntity<?> deleteInvoice (@PathVariable(value = "id") int id){
+		Optional<Invoice> invoice = invoiceRepository.findById(id);
+		
+		
+		if(!invoice.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		invoiceRepository.deleteById(id);
+		return ResponseEntity.ok().build();
 	}
 	
 	

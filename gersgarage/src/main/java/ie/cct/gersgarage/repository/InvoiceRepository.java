@@ -17,4 +17,6 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Integer>{
 	
 	public Optional<Invoice> findById(int id);
 
+	public void deleteById(int id);
+
 }
